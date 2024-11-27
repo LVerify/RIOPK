@@ -14,7 +14,7 @@
       ![image](https://github.com/user-attachments/assets/b4341497-3fe1-4f8c-9315-82a5a62118b6)
       Компонентный уровень:
       ![image](https://github.com/user-attachments/assets/fc907144-a5bc-467e-be01-4d98b677ea7b)
-    - [Схема БД](#схема БД)
+    - [Схема БД](#схема_БД)
       ![image](https://github.com/user-attachments/assets/3ed45928-a64a-44de-9106-f5060851222f)
     - [Диаграмма классов](#диаграмма-классов)
       ![package](https://github.com/user-attachments/assets/70ba6d55-92d8-4b20-8722-4ad818e995b1)
