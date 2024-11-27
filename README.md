@@ -11,11 +11,11 @@
 4. [Архитектура](#архитектура)
     - [Нотация C4](#нотация-c4)
       Контейнерный уровень:
-      ![image](https://github.com/user-attachments/assets/5b9d6f07-c165-4220-9e97-c7e2fb365238)
+      ![image](https://github.com/user-attachments/assets/b4341497-3fe1-4f8c-9315-82a5a62118b6)
       Компонентный уровень:
-      ![image](https://github.com/user-attachments/assets/629a8e7e-86b1-4ffd-b263-7ecf4db2615b)
+      ![image](https://github.com/user-attachments/assets/fc907144-a5bc-467e-be01-4d98b677ea7b)
 
     - [Диаграмма классов](#диаграмма-классов)
-      ![image](https://github.com/user-attachments/assets/4434bf58-ccd7-4a62-a858-1c1fc67006a3)
+      ![package](https://github.com/user-attachments/assets/70ba6d55-92d8-4b20-8722-4ad818e995b1)
     - [Дизайн](#дизайн)
       ![image](https://github.com/user-attachments/assets/4b682b34-e818-4e22-b830-cbee00e3bfa9)
