@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/9c05c12c-e8cb-4e4a-a4b8-54b384d05cc6)# RIOPK
+# RIOPK
 
 Система учета медицинских средств и препаратов
 ---
