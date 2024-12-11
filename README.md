@@ -14,7 +14,7 @@
       ![image](https://github.com/user-attachments/assets/b4341497-3fe1-4f8c-9315-82a5a62118b6)
       Компонентный уровень:
       ![image](https://github.com/user-attachments/assets/fc907144-a5bc-467e-be01-4d98b677ea7b)
-    - [UML диаграммы] (#UML)
+    - [UML диаграммы](#UML)
       ![image](https://github.com/user-attachments/assets/fb30a853-1d94-4288-96f7-97a35f2b38aa)
       ![image](https://github.com/user-attachments/assets/b9b6412d-c980-4ac4-9265-b604ef5ef552)
       ![image](https://github.com/user-attachments/assets/b0a43193-6af5-4aa5-95f3-8ae940737732)
