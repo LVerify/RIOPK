@@ -132,4 +132,28 @@ public class DepartmentController {
   public ResponseEntity<List<DepartmentReadDTO>> getAllDepartments() {
     return ResponseEntity.ok(departmentService.getAllDepartments());
   }
+
+  @PreAuthorize("isAuthenticated()")
+  @DeleteMapping("/{id}")
+  @Operation(
+      summary = "Удалить отделение",
+      description = "Этот эндпоинт позволяет удалить отделение.")
+  @ApiResponse(
+      responseCode = "204",
+      description = "Отделение успешно удалено.",
+      content =
+          @Content(
+              mediaType = MediaType.APPLICATION_JSON_VALUE,
+              schema = @Schema(implementation = DepartmentReadDTO.class)))
+  @ApiResponse(
+      responseCode = "404",
+      description = "Отделение не найдено.",
+      content =
+          @Content(
+              mediaType = MediaType.APPLICATION_JSON_VALUE,
+              schema = @Schema(implementation = ErrorResponse.class)))
+  public ResponseEntity<Void> deleteSpeciality(@PathVariable String id) {
+    departmentService.deleteDepartment(id);
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+  }
 }

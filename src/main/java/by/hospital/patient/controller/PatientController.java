@@ -1,9 +1,9 @@
-package by.hospital.doctor.controller;
+package by.hospital.patient.controller;
 
-import by.hospital.doctor.dto.SpecialityCreateUpdateDTO;
-import by.hospital.doctor.dto.SpecialityReadDTO;
-import by.hospital.doctor.service.SpecialityService;
 import by.hospital.exception.handler.ErrorResponse;
+import by.hospital.patient.dto.PatientCreateUpdateDTO;
+import by.hospital.patient.dto.PatientReadDTO;
+import by.hospital.patient.service.PatientService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -18,10 +18,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/specialities")
+@RequestMapping("/api/patients")
 @AllArgsConstructor
-public class SpecialityController {
-  private SpecialityService specialityService;
+public class PatientController {
+  private PatientService patientService;
 
   @PreAuthorize("isAuthenticated()")
   @GetMapping("{id}")
@@ -35,7 +35,7 @@ public class SpecialityController {
       content =
           @Content(
               mediaType = MediaType.APPLICATION_JSON_VALUE,
-              schema = @Schema(implementation = SpecialityReadDTO.class)))
+              schema = @Schema(implementation = PatientReadDTO.class)))
   @ApiResponse(
       responseCode = "403",
       description = "Неверный формат запроса или ошибка валидации.",
@@ -50,8 +50,8 @@ public class SpecialityController {
           @Content(
               mediaType = MediaType.APPLICATION_JSON_VALUE,
               schema = @Schema(implementation = ErrorResponse.class)))
-  public ResponseEntity<SpecialityReadDTO> getSpeciality(@PathVariable String id) {
-    return new ResponseEntity<>(specialityService.getSpeciality(id), HttpStatus.OK);
+  public ResponseEntity<PatientReadDTO> getPatient(@PathVariable String id) {
+    return new ResponseEntity<>(patientService.getPatient(id), HttpStatus.OK);
   }
 
   @PreAuthorize("isAuthenticated()")
@@ -65,7 +65,7 @@ public class SpecialityController {
       content =
           @Content(
               mediaType = MediaType.APPLICATION_JSON_VALUE,
-              schema = @Schema(implementation = SpecialityReadDTO.class)))
+              schema = @Schema(implementation = PatientReadDTO.class)))
   @ApiResponse(
       responseCode = "403",
       description = "Неверный формат запроса или ошибка валидации.",
@@ -80,9 +80,9 @@ public class SpecialityController {
           @Content(
               mediaType = MediaType.APPLICATION_JSON_VALUE,
               schema = @Schema(implementation = ErrorResponse.class)))
-  public ResponseEntity<SpecialityReadDTO> createSpeciality(
-      @RequestBody @Valid SpecialityCreateUpdateDTO dto) {
-    return new ResponseEntity<>(specialityService.createSpeciality(dto), HttpStatus.CREATED);
+  public ResponseEntity<PatientReadDTO> createPatient(
+      @RequestBody @Valid PatientCreateUpdateDTO dto) {
+    return new ResponseEntity<>(patientService.createPatient(dto), HttpStatus.CREATED);
   }
 
   @PreAuthorize("isAuthenticated()")
@@ -97,7 +97,7 @@ public class SpecialityController {
       content =
           @Content(
               mediaType = MediaType.APPLICATION_JSON_VALUE,
-              schema = @Schema(implementation = SpecialityReadDTO.class)))
+              schema = @Schema(implementation = PatientReadDTO.class)))
   @ApiResponse(
       responseCode = "403",
       description = "Неверный формат запроса или ошибка валидации.",
@@ -112,9 +112,9 @@ public class SpecialityController {
           @Content(
               mediaType = MediaType.APPLICATION_JSON_VALUE,
               schema = @Schema(implementation = ErrorResponse.class)))
-  public ResponseEntity<SpecialityReadDTO> updateSpeciality(
-      @PathVariable String id, @RequestBody @Valid SpecialityCreateUpdateDTO dto) {
-    return new ResponseEntity<>(specialityService.updateSpeciality(id, dto), HttpStatus.OK);
+  public ResponseEntity<PatientReadDTO> updatePatient(
+      @PathVariable String id, @RequestBody @Valid PatientCreateUpdateDTO dto) {
+    return new ResponseEntity<>(patientService.updatePatient(id, dto), HttpStatus.OK);
   }
 
   @PreAuthorize("isAuthenticated()")
@@ -128,9 +128,9 @@ public class SpecialityController {
       content =
           @Content(
               mediaType = MediaType.APPLICATION_JSON_VALUE,
-              schema = @Schema(implementation = SpecialityReadDTO.class)))
-  public ResponseEntity<List<SpecialityReadDTO>> getAllSpecialities() {
-    return ResponseEntity.ok(specialityService.getAllSpecialities());
+              schema = @Schema(implementation = PatientReadDTO.class)))
+  public ResponseEntity<List<PatientReadDTO>> getAllPatients() {
+    return ResponseEntity.ok(patientService.getAllPatients());
   }
 
   @PreAuthorize("isAuthenticated()")
@@ -144,7 +144,7 @@ public class SpecialityController {
       content =
           @Content(
               mediaType = MediaType.APPLICATION_JSON_VALUE,
-              schema = @Schema(implementation = SpecialityReadDTO.class)))
+              schema = @Schema(implementation = PatientReadDTO.class)))
   @ApiResponse(
       responseCode = "404",
       description = "Специальность не найдена.",
@@ -152,8 +152,8 @@ public class SpecialityController {
           @Content(
               mediaType = MediaType.APPLICATION_JSON_VALUE,
               schema = @Schema(implementation = ErrorResponse.class)))
-  public ResponseEntity<Void> deleteSpeciality(@PathVariable String id) {
-    specialityService.deleteSpeciality(id);
+  public ResponseEntity<Void> deletePatient(@PathVariable String id) {
+    patientService.deletePatient(id);
     return new ResponseEntity<>(HttpStatus.NO_CONTENT);
   }
 }
