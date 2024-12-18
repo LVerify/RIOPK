@@ -17,15 +17,15 @@ import org.springframework.stereotype.Component;
     unmappedTargetPolicy = ReportingPolicy.IGNORE,
     componentModel = MappingConstants.ComponentModel.SPRING)
 public interface DoctorMapper {
-  Doctor dtoToEntity(DoctorCreateDTO dto);
+  Doctor toEntity(DoctorCreateDTO dto);
 
-  DoctorReadDTO entityToDto(Doctor doctor);
+  DoctorReadDTO toDto(Doctor doctor);
 
   void updateEntity(DoctorUpdateDTO dto, @MappingTarget Doctor doctor);
 
-  DepartmentReadDTO departmentEntityToDto(Department department);
+  DepartmentReadDTO toDto(Department department);
 
-  SpecialityReadDTO specialityEntityToDto(Speciality speciality);
+  SpecialityReadDTO toDto(Speciality speciality);
 
-  UserReadDTO userEntityToDto(User user);
+  UserReadDTO toDto(User user);
 }

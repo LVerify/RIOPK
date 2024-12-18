@@ -14,9 +14,9 @@ import org.springframework.stereotype.Component;
     unmappedTargetPolicy = ReportingPolicy.IGNORE,
     componentModel = MappingConstants.ComponentModel.SPRING)
 public interface SpecialityMapper {
-  Speciality dtoToEntity(SpecialityCreateUpdateDTO dto);
+  Speciality toEntity(SpecialityCreateUpdateDTO dto);
 
-  SpecialityReadDTO entityToDto(Speciality speciality);
+  SpecialityReadDTO toDto(Speciality speciality);
 
   void updateEntity(SpecialityCreateUpdateDTO dto, @MappingTarget Speciality speciality);
 }

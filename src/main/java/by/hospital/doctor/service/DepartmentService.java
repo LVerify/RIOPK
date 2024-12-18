@@ -26,7 +26,7 @@ public class DepartmentService {
   public DepartmentReadDTO createDepartment(DepartmentCreateUpdateDTO dto) {
     if (departmentRepository.existsByName(dto.getName()))
       throw new DataAlreadyExistsException("Такое отделение уже существует");
-    return departmentMapper.entityToDto(saveDepartment(departmentMapper.dtoToEntity(dto)));
+    return departmentMapper.toDto(saveDepartment(departmentMapper.toEntity(dto)));
   }
 
   public DepartmentReadDTO updateDepartment(String id, DepartmentCreateUpdateDTO dto) {
@@ -35,7 +35,7 @@ public class DepartmentService {
             .findById(id)
             .orElseThrow(() -> new DataNotFoundException(DEPARTMENT_NOT_FOUND));
     departmentMapper.updateEntity(dto, updatedDepartment);
-    return departmentMapper.entityToDto(saveDepartment(updatedDepartment));
+    return departmentMapper.toDto(saveDepartment(updatedDepartment));
   }
 
   public DepartmentReadDTO getDepartment(String id) {
@@ -43,11 +43,11 @@ public class DepartmentService {
         departmentRepository
             .findById(id)
             .orElseThrow(() -> new DataNotFoundException(DEPARTMENT_NOT_FOUND));
-    return departmentMapper.entityToDto(existingDepartment);
+    return departmentMapper.toDto(existingDepartment);
   }
 
   public List<DepartmentReadDTO> getAllDepartments() {
-    return departmentRepository.findAll().stream().map(departmentMapper::entityToDto).toList();
+    return departmentRepository.findAll().stream().map(departmentMapper::toDto).toList();
   }
 
   public void deleteDepartment(String id) {

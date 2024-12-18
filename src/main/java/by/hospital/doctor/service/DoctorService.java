@@ -8,7 +8,6 @@ import by.hospital.doctor.repository.DoctorRepository;
 import by.hospital.doctor.service.mapper.DoctorMapper;
 import by.hospital.exception.DataAlreadyExistsException;
 import by.hospital.exception.DataNotFoundException;
-import by.hospital.user.repository.UserRepository;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContext;
@@ -23,7 +22,6 @@ public class DoctorService {
 
   private DoctorMapper doctorMapper;
   private DoctorRepository doctorRepository;
-  private UserRepository userRepository;
 
   public Doctor saveDoctor(Doctor doctor) {
     return doctorRepository.save(doctor);
@@ -33,7 +31,7 @@ public class DoctorService {
     SecurityContext context = SecurityContextHolder.getContext();
     if (doctorRepository.existsByUser_Name(context.getAuthentication().getName()))
       throw new DataAlreadyExistsException("На данного пользователя уже зарегистрирован сотрудник");
-    return doctorMapper.entityToDto(saveDoctor(doctorMapper.dtoToEntity(dto)));
+    return doctorMapper.toDto(saveDoctor(doctorMapper.toEntity(dto)));
   }
 
   public DoctorReadDTO updateDoctor(String id, DoctorUpdateDTO dto) {
@@ -42,7 +40,7 @@ public class DoctorService {
             .findById(id)
             .orElseThrow(() -> new DataNotFoundException(DOCTOR_NOT_FOUND));
     doctorMapper.updateEntity(dto, updatedDoctor);
-    return doctorMapper.entityToDto(saveDoctor(updatedDoctor));
+    return doctorMapper.toDto(saveDoctor(updatedDoctor));
   }
 
   public DoctorReadDTO getDoctor(String id) {
@@ -50,15 +48,10 @@ public class DoctorService {
         doctorRepository
             .findById(id)
             .orElseThrow(() -> new DataNotFoundException(DOCTOR_NOT_FOUND));
-    return doctorMapper.entityToDto(existingDoctor);
+    return doctorMapper.toDto(existingDoctor);
   }
 
   public List<DoctorReadDTO> getAllDoctors() {
-    return doctorRepository.findAll().stream().map(doctorMapper::entityToDto).toList();
-  }
-
-  public void deleteDoctor(String id) {
-    if (!doctorRepository.existsById(id)) throw new DataNotFoundException(DOCTOR_NOT_FOUND);
-    doctorRepository.deleteById(id);
+    return doctorRepository.findAll().stream().map(doctorMapper::toDto).toList();
   }
 }

@@ -16,9 +16,9 @@ import org.springframework.stereotype.Component;
     componentModel = MappingConstants.ComponentModel.SPRING)
 public interface UserMapper {
 
-  User dtoToEntity(SignUpRequest dto);
+  User toEntity(SignUpRequest dto);
 
-  UserReadDTO entityToDto(User user);
+  UserReadDTO toDto(User user);
 
   void updateEntity(UserUpdateDTO dto, @MappingTarget User user);
 }

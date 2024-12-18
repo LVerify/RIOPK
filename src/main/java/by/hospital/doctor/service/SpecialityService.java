@@ -26,7 +26,7 @@ public class SpecialityService {
   public SpecialityReadDTO createSpeciality(SpecialityCreateUpdateDTO dto) {
     if (specialityRepository.existsByName(dto.getName()))
       throw new DataAlreadyExistsException("Такая специальность уже существует");
-    return specialityMapper.entityToDto(saveSpeciality(specialityMapper.dtoToEntity(dto)));
+    return specialityMapper.toDto(saveSpeciality(specialityMapper.toEntity(dto)));
   }
 
   public SpecialityReadDTO updateSpeciality(String id, SpecialityCreateUpdateDTO dto) {
@@ -35,11 +35,11 @@ public class SpecialityService {
             .findById(id)
             .orElseThrow(() -> new DataNotFoundException(SPECIALITY_NOT_FOUND));
     specialityMapper.updateEntity(dto, updatedSpeciality);
-    return specialityMapper.entityToDto(saveSpeciality(updatedSpeciality));
+    return specialityMapper.toDto(saveSpeciality(updatedSpeciality));
   }
 
   public List<SpecialityReadDTO> getAllSpecialities() {
-    return specialityRepository.findAll().stream().map(specialityMapper::entityToDto).toList();
+    return specialityRepository.findAll().stream().map(specialityMapper::toDto).toList();
   }
 
   public SpecialityReadDTO getSpeciality(String id) {
@@ -47,7 +47,7 @@ public class SpecialityService {
         specialityRepository
             .findById(id)
             .orElseThrow(() -> new DataNotFoundException(SPECIALITY_NOT_FOUND));
-    return specialityMapper.entityToDto(existingSpeciality);
+    return specialityMapper.toDto(existingSpeciality);
   }
 
   public void deleteSpeciality(String id) {

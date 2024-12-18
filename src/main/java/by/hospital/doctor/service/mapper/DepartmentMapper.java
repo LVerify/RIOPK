@@ -14,9 +14,9 @@ import org.springframework.stereotype.Component;
     unmappedTargetPolicy = ReportingPolicy.IGNORE,
     componentModel = MappingConstants.ComponentModel.SPRING)
 public interface DepartmentMapper {
-  Department dtoToEntity(DepartmentCreateUpdateDTO dto);
+  Department toEntity(DepartmentCreateUpdateDTO dto);
 
-  DepartmentReadDTO entityToDto(Department department);
+  DepartmentReadDTO toDto(Department department);
 
   void updateEntity(DepartmentCreateUpdateDTO dto, @MappingTarget Department department);
 }
