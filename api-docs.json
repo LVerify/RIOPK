@@ -1,1 +1,2805 @@
-{"openapi":"3.0.1","info":{"title":"Medicine-Accounting Documentation","description":"API documentation for the REST API project with Spring Security","version":"0.0.1"},"servers":[{"url":"http://localhost:8080","description":"Generated server url"}],"security":[{"BearerAuth":[]}],"paths":{"/api/users/{id}":{"get":{"tags":["user-controller"],"summary":"Получить информацию о пользователе","description":"Этот эндпоинт позволяет получить информацию о пользователе по его уникальному идентификатору.","operationId":"getUser","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"404":{"description":"Пользователь не найден.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"200":{"description":"Пользователь найден и возвращен.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/UserReadDTO"}}}}}},"put":{"tags":["user-controller"],"summary":"Обновить информацию о пользователе","description":"Этот эндпоинт позволяет обновить информацию о пользователе по его уникальному идентификатору.","operationId":"updateUser","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/UserUpdateDTO"}}},"required":true},"responses":{"404":{"description":"Пользователь не найден.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"200":{"description":"Пользователь успешно обновлен.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/UserReadDTO"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/specialities/{id}":{"get":{"tags":["speciality-controller"],"summary":"Получить информацию об специальности","description":"Этот эндпоинт позволяет получить информацию об специальности по её уникальному идентификатору.","operationId":"getSpeciality","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"404":{"description":"Специальность не найдена.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"200":{"description":"Специальность успешно получена.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/SpecialityReadDTO"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}},"put":{"tags":["speciality-controller"],"summary":"Обновить информацию об специальности","description":"Этот эндпоинт позволяет обновить информацию об специальности по её уникальному идентификатору.","operationId":"updateSpeciality","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SpecialityCreateUpdateDTO"}}},"required":true},"responses":{"200":{"description":"Специальность успешно обновлена.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/SpecialityReadDTO"}}}},"404":{"description":"Специальность не найдена.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}},"delete":{"tags":["speciality-controller"],"summary":"Удалить специальность","description":"Этот эндпоинт позволяет удалить специальность.","operationId":"deleteSpeciality","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"404":{"description":"Специальность не найдена.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"204":{"description":"Специальность успешно удалена.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/SpecialityReadDTO"}}}}}}},"/api/patients/{patientId}/disease-histories/{id}":{"get":{"tags":["disease-history-controller"],"summary":"Получить информацию об истории болезни","description":"Этот эндпоинт позволяет получить информацию об истории болезни по её уникальному идентификатору.","operationId":"getDiseaseHistory","parameters":[{"name":"patientId","in":"path","required":true,"schema":{"type":"string"}},{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"200":{"description":"История болезни успешно получена.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DiseaseHistoryReadDTO"}}}},"404":{"description":"История болезни не найдена.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}},"put":{"tags":["disease-history-controller"],"summary":"Обновить информацию об истории болезни","description":"Этот эндпоинт позволяет обновить информацию об истории болезни по её уникальному идентификатору.","operationId":"updateDiseaseHistory","parameters":[{"name":"patientId","in":"path","required":true,"schema":{"type":"string"}},{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/DiseaseHistoryCreateUpdateDTO"}}},"required":true},"responses":{"200":{"description":"История болезни успешно обновлена.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DiseaseHistoryReadDTO"}}}},"409":{"description":"История болезни не найдена у данного пациента.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"404":{"description":"История болезни не найдена.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}},"delete":{"tags":["disease-history-controller"],"summary":"Удалить историю болезни","description":"Этот эндпоинт позволяет удалить историю болезни.","operationId":"deleteDiseaseHistory","parameters":[{"name":"patientId","in":"path","required":true,"schema":{"type":"string"}},{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"204":{"description":"История болезни успешно удалёна.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DiseaseHistoryReadDTO"}}}},"404":{"description":"История болезни не найдена.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/patients/{patientId}/disease-histories/{diseaseHistoryId}/prescriptions/{id}":{"get":{"tags":["prescription-controller"],"summary":"Получить информацию о назначении","description":"Этот эндпоинт позволяет получить информацию о назначении по его уникальному идентификатору.","operationId":"getPrescription","parameters":[{"name":"patientId","in":"path","required":true,"schema":{"type":"string"}},{"name":"diseaseHistoryId","in":"path","required":true,"schema":{"type":"string"}},{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"200":{"description":"Назначение успешно получено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/PrescriptionReadDTO"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"404":{"description":"Назначение не найдено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}},"put":{"tags":["prescription-controller"],"summary":"Обновить информацию о назначении","description":"Этот эндпоинт позволяет обновить информацию о назначении по его уникальному идентификатору.","operationId":"updatePrescription","parameters":[{"name":"patientId","in":"path","required":true,"schema":{"type":"string"}},{"name":"diseaseHistoryId","in":"path","required":true,"schema":{"type":"string"}},{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/PrescriptionUpdateDTO"}}},"required":true},"responses":{"409":{"description":"Назначение не найдено у данной истории болезней.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"200":{"description":"Назначение успешно обновлено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/PrescriptionReadDTO"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"404":{"description":"Назначение не найдено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}},"delete":{"tags":["prescription-controller"],"summary":"Удалить назначение","description":"Этот эндпоинт позволяет удалить назначение (сменить статус на 'отменено').","operationId":"deletePrescription","parameters":[{"name":"patientId","in":"path","required":true,"schema":{"type":"string"}},{"name":"diseaseHistoryId","in":"path","required":true,"schema":{"type":"string"}},{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"200":{"description":"Назначение успешно удалено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/PrescriptionReadDTO"}}}},"404":{"description":"Назначение не найдено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/patients/{id}":{"get":{"tags":["patient-controller"],"summary":"Получить информацию о пациенте","description":"Этот эндпоинт позволяет получить информацию о пациенте по его уникальному идентификатору.","operationId":"getPatient","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"200":{"description":"Пациент успешно получен.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/PatientReadDTO"}}}},"404":{"description":"Пациент не найден.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}},"put":{"tags":["patient-controller"],"summary":"Обновить информацию об пациенте","description":"Этот эндпоинт позволяет обновить информацию об пациенте по его уникальному идентификатору.","operationId":"updatePatient","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/PatientCreateUpdateDTO"}}},"required":true},"responses":{"200":{"description":"Пациент успешно обновлён.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/PatientReadDTO"}}}},"404":{"description":"Пациент не найден.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}},"delete":{"tags":["patient-controller"],"summary":"Удалить пациент","description":"Этот эндпоинт позволяет удалить пациента.","operationId":"deletePatient","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"404":{"description":"Пациент не найден.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"204":{"description":"Пациент успешно удалён.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/PatientReadDTO"}}}}}}},"/api/medicines/{id}":{"get":{"tags":["medicine-controller"],"summary":"Получить информацию об отделении","description":"Этот эндпоинт позволяет получить информацию об отделении по его уникальному идентификатору.","operationId":"getMedicine","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"404":{"description":"Отделение не найдено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"200":{"description":"Отделение успешно получено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/MedicineReadDTO"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}},"put":{"tags":["medicine-controller"],"summary":"Обновить информацию об отделении","description":"Этот эндпоинт позволяет обновить информацию об отделении по его уникальному идентификатору.","operationId":"updateMedicine","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/MedicineCreateUpdateDTO"}}},"required":true},"responses":{"404":{"description":"Отделение не найдено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"200":{"description":"Отделение успешно обновлено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/MedicineReadDTO"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}},"delete":{"tags":["medicine-controller"],"summary":"Удалить отделение","description":"Этот эндпоинт позволяет удалить отделение.","operationId":"deleteSpeciality_1","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"404":{"description":"Отделение не найдено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"204":{"description":"Отделение успешно удалено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/MedicineReadDTO"}}}}}}},"/api/doctors/{id}":{"get":{"tags":["doctor-controller"],"summary":"Получить информацию о сотруднике","description":"Этот эндпоинт позволяет получить информацию о сотруднике по его уникальному идентификатору.","operationId":"getDoctor","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"404":{"description":"Сотрудник не найден.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"200":{"description":"Сотрудник успешно получен.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DoctorReadDTO"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}},"put":{"tags":["doctor-controller"],"summary":"Обновить информацию о сотруднике","description":"Этот эндпоинт позволяет обновить информацию о сотруднике по его уникальному идентификатору.","operationId":"updateDoctor","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/DoctorUpdateDTO"}}},"required":true},"responses":{"200":{"description":"Сотрудник успешно обновлен.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DoctorReadDTO"}}}},"404":{"description":"Сотрудник не найден.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/diseases/{id}":{"get":{"tags":["disease-controller"],"summary":"Получить информацию об заболевании","description":"Этот эндпоинт позволяет получить информацию об заболевании по его уникальному идентификатору.","operationId":"getDisease","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"404":{"description":"Заболевание не найдено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"200":{"description":"Заболевание успешно получено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DiseaseReadDTO"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}},"put":{"tags":["disease-controller"],"summary":"Обновить информацию об заболевании","description":"Этот эндпоинт позволяет обновить информацию об заболевании по его уникальному идентификатору.","operationId":"updateDisease","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/DiseaseCreateUpdateDTO"}}},"required":true},"responses":{"404":{"description":"Заболевание не найдено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"200":{"description":"Заболевание успешно обновлено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DiseaseReadDTO"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}},"delete":{"tags":["disease-controller"],"summary":"Удалить заболевание","description":"Этот эндпоинт позволяет удалить заболевание.","operationId":"deleteSpeciality_2","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"404":{"description":"Заболевание не найдено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"204":{"description":"Заболевание успешно удалено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DiseaseReadDTO"}}}}}}},"/api/departments/{id}":{"get":{"tags":["department-controller"],"summary":"Получить информацию об отделении","description":"Этот эндпоинт позволяет получить информацию об отделении по его уникальному идентификатору.","operationId":"getDepartment","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"404":{"description":"Отделение не найдено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"200":{"description":"Отделение успешно получено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DepartmentReadDTO"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}},"put":{"tags":["department-controller"],"summary":"Обновить информацию об отделении","description":"Этот эндпоинт позволяет обновить информацию об отделении по его уникальному идентификатору.","operationId":"updateDepartment","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/DepartmentCreateUpdateDTO"}}},"required":true},"responses":{"404":{"description":"Отделение не найдено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"200":{"description":"Отделение успешно обновлено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DepartmentReadDTO"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}},"delete":{"tags":["department-controller"],"summary":"Удалить отделение","description":"Этот эндпоинт позволяет удалить отделение.","operationId":"deleteSpeciality_3","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"404":{"description":"Отделение не найдено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"204":{"description":"Отделение успешно удалено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DepartmentReadDTO"}}}}}}},"/api/specialities":{"get":{"tags":["speciality-controller"],"summary":"Получить список всех специальностей","description":"Этот эндпоинт позволяет получить информацию о всех специальностях.","operationId":"getAllSpecialities","responses":{"200":{"description":"Успех.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/SpecialityReadDTO"}}}}}},"post":{"tags":["speciality-controller"],"summary":"Создать специальность больницы","description":"Этот эндпоинт позволяет создать новую специальность больницы.","operationId":"createSpeciality","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SpecialityCreateUpdateDTO"}}},"required":true},"responses":{"201":{"description":"Специальность успешно добавлена.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/SpecialityReadDTO"}}}},"409":{"description":"Специальность с таким названием уже существует.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/patients":{"get":{"tags":["patient-controller"],"summary":"Получить список всех пациентов","description":"Этот эндпоинт позволяет получить информацию о всех пациентах.","operationId":"getAllPatients","responses":{"200":{"description":"Успех.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/PatientReadDTO"}}}}}},"post":{"tags":["patient-controller"],"summary":"Добавить пациента больницы","description":"Этот эндпоинт позволяет добавить нового пациента больницы.","operationId":"createPatient","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/PatientCreateUpdateDTO"}}},"required":true},"responses":{"409":{"description":"Пациент с таким названием уже существует.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"201":{"description":"Пациент успешно добавлен.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/PatientReadDTO"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/patients/{patientId}/disease-histories":{"get":{"tags":["disease-history-controller"],"summary":"Получить список всех историй болезней","description":"Этот эндпоинт позволяет получить информацию о всех историях болезней.","operationId":"getAllDiseaseHistories","parameters":[{"name":"patientId","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"200":{"description":"Успех.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DiseaseHistoryReadDTO"}}}}}},"post":{"tags":["disease-history-controller"],"summary":"Добавить историю болезни пациенту","description":"Этот эндпоинт позволяет добавить новую историю болезни пациенту.","operationId":"createDiseaseHistory","parameters":[{"name":"patientId","in":"path","required":true,"schema":{"type":"string"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/DiseaseHistoryCreateUpdateDTO"}}},"required":true},"responses":{"201":{"description":"История Болезни успешно добавлен.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DiseaseHistoryReadDTO"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/patients/{patientId}/disease-histories/{diseaseHistoryId}/prescriptions":{"get":{"tags":["prescription-controller"],"summary":"Получить список всех назначений","description":"Этот эндпоинт позволяет получить информацию о всех назначениях.","operationId":"getAllPrescriptions","parameters":[{"name":"patientId","in":"path","required":true,"schema":{"type":"string"}},{"name":"diseaseHistoryId","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"200":{"description":"Успех.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/PrescriptionReadDTO"}}}}}},"post":{"tags":["prescription-controller"],"summary":"Добавить назначение в историю болезни","description":"Этот эндпоинт позволяет добавить новое назначение в историю болезни пациента.","operationId":"createPrescription","parameters":[{"name":"patientId","in":"path","required":true,"schema":{"type":"string"}},{"name":"diseaseHistoryId","in":"path","required":true,"schema":{"type":"string"}}],"requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/PrescriptionCreateDTO"}}},"required":true},"responses":{"201":{"description":"Назначение успешно добавлено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/PrescriptionReadDTO"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/medicines":{"get":{"tags":["medicine-controller"],"summary":"Получить список всех отделений","description":"Этот эндпоинт позволяет получить информацию о всех отделениях.","operationId":"getAllMedicines","responses":{"200":{"description":"Успех.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/MedicineReadDTO"}}}}}},"post":{"tags":["medicine-controller"],"summary":"Создать отделение больницы","description":"Этот эндпоинт позволяет создать новое отделение больницы.","operationId":"createMedicine","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/MedicineCreateUpdateDTO"}}},"required":true},"responses":{"409":{"description":"Отделение с таким названием уже существует.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"201":{"description":"Отделение успешно добавлено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/MedicineReadDTO"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/doctors":{"get":{"tags":["doctor-controller"],"summary":"Получить список всех сотрудников","description":"Этот эндпоинт позволяет получить информацию о всех сотрудниках.","operationId":"getAllDoctors","responses":{"200":{"description":"Успех.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DoctorReadDTO"}}}}}},"post":{"tags":["doctor-controller"],"summary":"Создать сотрудника больницы","description":"Этот эндпоинт позволяет создать нового сотрудника больницы для существующей учётной записи.","operationId":"createDoctor","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/DoctorCreateDTO"}}},"required":true},"responses":{"201":{"description":"Сотрудник успешно добавлен.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DoctorReadDTO"}}}},"409":{"description":"Для данной учётной записи уже создан сотрудник.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/diseases":{"get":{"tags":["disease-controller"],"summary":"Получить список всех заболеваний","description":"Этот эндпоинт позволяет получить информацию о всех заболеваниях.","operationId":"getAllDiseases","responses":{"200":{"description":"Успех.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DiseaseReadDTO"}}}}}},"post":{"tags":["disease-controller"],"summary":"Создать заболевание больницы","description":"Этот эндпоинт позволяет создать новое заболевание больницы.","operationId":"createDisease","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/DiseaseCreateUpdateDTO"}}},"required":true},"responses":{"409":{"description":"Заболевание с таким названием уже существует.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"201":{"description":"Заболевание успешно добавлено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DiseaseReadDTO"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/departments":{"get":{"tags":["department-controller"],"summary":"Получить список всех отделений","description":"Этот эндпоинт позволяет получить информацию о всех отделениях.","operationId":"getAllDepartments","responses":{"200":{"description":"Успех.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DepartmentReadDTO"}}}}}},"post":{"tags":["department-controller"],"summary":"Создать отделение больницы","description":"Этот эндпоинт позволяет создать новое отделение больницы.","operationId":"createDepartment","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/DepartmentCreateUpdateDTO"}}},"required":true},"responses":{"201":{"description":"Отделение успешно добавлено.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DepartmentReadDTO"}}}},"409":{"description":"Отделение с таким названием уже существует.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"403":{"description":"Неверный формат запроса или ошибка валидации.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/auth/sign-up":{"post":{"tags":["authentication-controller"],"summary":"Регистрация нового пользователя","description":"Эндпоинт для регистрации нового пользователя. При успешной регистрации возвращает JWT-токен для авторизации.","operationId":"signUp","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SignUpRequest"}}},"required":true},"responses":{"201":{"description":"Пользователь успешно зарегистрирован.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/JwtAuthenticationResponse"}}}},"403":{"description":"Нарушена структура объекта или данные объекта не валидны.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"409":{"description":"Пользователь уже существует.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/auth/sign-in":{"post":{"tags":["authentication-controller"],"summary":"Авторизация пользователя","description":"Эндпоинт для входа пользователя с использованием предоставленных учетных данных. Возвращает JWT токен для авторизации.","operationId":"signIn","requestBody":{"content":{"application/json":{"schema":{"$ref":"#/components/schemas/SignInRequest"}}},"required":true},"responses":{"403":{"description":"Нарушена структура объекта или данные объекта не валидны.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"200":{"description":"Пользователь успешно авторизован.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/JwtAuthenticationResponse"}}}},"404":{"description":"Пользователь не найден.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}},"/api/users":{"get":{"tags":["user-controller"],"summary":"Получить список всех пользователей","description":"Этот эндпоинт позволяет получить информацию о всех пользователях.","operationId":"getAllUsers","responses":{"200":{"description":"Успех.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/UserReadDTO"}}}}}}},"/api/patients/{patientId}/disease-histories/{diseaseHistoryId}/prescriptions/by-disease-history":{"get":{"tags":["prescription-controller"],"summary":"Получить список всех назначений в истории болезни","description":"Этот эндпоинт позволяет получить информацию о всех назначениях конкретной истории болезни.","operationId":"getAllPrescriptionsByDiseaseHistory","parameters":[{"name":"patientId","in":"path","required":true,"schema":{"type":"string"}},{"name":"diseaseHistoryId","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"404":{"description":"Пациент/история болезни не найден/найдена.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}},"200":{"description":"Успех.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/PrescriptionReadDTO"}}}}}}},"/api/patients/{patientId}/disease-histories/by-patient":{"get":{"tags":["disease-history-controller"],"summary":"Получить список всех историй болезней","description":"Этот эндпоинт позволяет получить информацию о всех историях болезней.","operationId":"getAllDiseaseHistoriesByPatient","parameters":[{"name":"patientId","in":"path","required":true,"schema":{"type":"string"}}],"responses":{"200":{"description":"Успех.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/DiseaseHistoryReadDTO"}}}},"404":{"description":"Пациент не найден.","content":{"application/json":{"schema":{"$ref":"#/components/schemas/ErrorResponse"}}}}}}}},"components":{"schemas":{"UserUpdateDTO":{"required":["username"],"type":"object","properties":{"username":{"type":"string"}}},"ErrorResponse":{"type":"object","properties":{"errorCode":{"type":"string","enum":["DATA_NOT_FOUND","DATA_ALREADY_EXISTS","DATA_CONFLICT","VALIDATION_ERROR","JSON_NOT_READABLE","STATUS_TRANSITION_NOT_ALLOWED"]},"message":{"type":"string"},"timestamp":{"type":"string","format":"date-time"}}},"UserReadDTO":{"type":"object","properties":{"id":{"type":"string"},"username":{"type":"string"},"role":{"type":"string","enum":["DOCTOR","HEAD_NURSE","DEPARTMENT_HEAD","PHARMACIST","DIRECTOR"]}}},"SpecialityCreateUpdateDTO":{"required":["name"],"type":"object","properties":{"name":{"type":"string"}}},"SpecialityReadDTO":{"type":"object","properties":{"id":{"type":"string"},"name":{"type":"string"}}},"DiseaseHistoryCreateUpdateDTO":{"required":["conclusion","diseaseId"],"type":"object","properties":{"diseaseId":{"type":"string"},"conclusion":{"type":"string"}}},"DepartmentReadDTO":{"type":"object","properties":{"id":{"type":"string"},"name":{"type":"string"}}},"DiseaseHistoryReadDTO":{"type":"object","properties":{"id":{"type":"string"},"disease":{"$ref":"#/components/schemas/DiseaseReadDTO"},"prescriptions":{"type":"array","items":{"$ref":"#/components/schemas/PrescriptionReadDTO"}},"conclusion":{"type":"string"}}},"DiseaseReadDTO":{"type":"object","properties":{"id":{"type":"string"},"name":{"type":"string"},"description":{"type":"string"},"type":{"type":"string"}}},"DoctorReadDTO":{"type":"object","properties":{"id":{"type":"string"},"user":{"$ref":"#/components/schemas/UserReadDTO"},"firstName":{"type":"string"},"lastName":{"type":"string"},"patronymicName":{"type":"string"},"department":{"$ref":"#/components/schemas/DepartmentReadDTO"},"speciality":{"$ref":"#/components/schemas/SpecialityReadDTO"},"mobilePhone":{"type":"string"}}},"MedicineReadDTO":{"type":"object","properties":{"id":{"type":"string"},"name":{"type":"string"},"manual":{"type":"string"},"dose":{"type":"number","format":"double"},"measurementUnit":{"type":"string","enum":["GRAMS","MILLIGRAMS","LITERS","MILLILITRES","PIECES"]},"isDrug":{"type":"boolean"},"form":{"type":"string"}}},"PrescriptionReadDTO":{"type":"object","properties":{"id":{"type":"string"},"doctor":{"$ref":"#/components/schemas/DoctorReadDTO"},"medicine":{"$ref":"#/components/schemas/MedicineReadDTO"},"medicineAmount":{"type":"number","format":"double"},"description":{"type":"string"},"status":{"type":"string","enum":["CREATED","APPROVED","IN_STOCK_CHECK","IN_STOCK","OUT_OF_STOCK","ORDERED","DELIVERED","RECEIVED_BY_NURSE","CANCELLED","COMPLETED"]},"prescriptionDate":{"type":"string","format":"date"}}},"PrescriptionUpdateDTO":{"required":["description","doctorId","medicineId"],"type":"object","properties":{"medicineId":{"type":"string"},"medicineAmount":{"type":"number","format":"double"},"doctorId":{"type":"string"},"description":{"type":"string"},"status":{"type":"string","enum":["CREATED","APPROVED","IN_STOCK_CHECK","IN_STOCK","OUT_OF_STOCK","ORDERED","DELIVERED","RECEIVED_BY_NURSE","CANCELLED","COMPLETED"]}}},"PatientCreateUpdateDTO":{"required":["address","dateOfBirth","firstName","gender","lastName","mobilePhone"],"type":"object","properties":{"firstName":{"type":"string"},"lastName":{"type":"string"},"patronymicName":{"type":"string"},"dateOfBirth":{"type":"string","format":"date"},"gender":{"type":"string","enum":["MALE","FEMALE"]},"mobilePhone":{"type":"string"},"address":{"type":"string"}}},"PatientReadDTO":{"type":"object","properties":{"id":{"type":"string"},"firstName":{"type":"string"},"lastName":{"type":"string"},"patronymicName":{"type":"string"},"dateOfBirth":{"type":"string","format":"date"},"gender":{"type":"string","enum":["MALE","FEMALE"]},"mobilePhone":{"type":"string"},"address":{"type":"string"},"diseaseHistories":{"type":"array","items":{"$ref":"#/components/schemas/DiseaseHistoryReadDTO"}}}},"MedicineCreateUpdateDTO":{"type":"object","properties":{"name":{"type":"string"},"manual":{"type":"string"},"dose":{"type":"number","format":"double"},"measurementUnit":{"type":"string","enum":["GRAMS","MILLIGRAMS","LITERS","MILLILITRES","PIECES"]},"isDrug":{"type":"boolean"},"form":{"type":"string"}}},"DoctorUpdateDTO":{"required":["departmentId","firstName","lastName","mobilePhone","specialityId"],"type":"object","properties":{"firstName":{"type":"string"},"lastName":{"type":"string"},"patronymicName":{"type":"string"},"departmentId":{"type":"string"},"specialityId":{"type":"string"},"mobilePhone":{"type":"string"}}},"DiseaseCreateUpdateDTO":{"required":["description","name","type"],"type":"object","properties":{"name":{"type":"string"},"description":{"type":"string"},"type":{"type":"string"}}},"DepartmentCreateUpdateDTO":{"required":["name"],"type":"object","properties":{"name":{"type":"string"}}},"PrescriptionCreateDTO":{"required":["description","doctorId","medicineId"],"type":"object","properties":{"medicineId":{"type":"string"},"medicineAmount":{"type":"number","format":"double"},"doctorId":{"type":"string"},"description":{"type":"string"},"status":{"type":"string","description":"Статус назначения","enum":["CREATED","APPROVED","IN_STOCK_CHECK","IN_STOCK","OUT_OF_STOCK","ORDERED","DELIVERED","RECEIVED_BY_NURSE","CANCELLED","COMPLETED","CREATED","APPROVED","CANCELLED"]}}},"DoctorCreateDTO":{"required":["departmentId","firstName","lastName","mobilePhone","specialityId"],"type":"object","properties":{"firstName":{"type":"string"},"lastName":{"type":"string"},"patronymicName":{"type":"string"},"departmentId":{"type":"string"},"specialityId":{"type":"string"},"mobilePhone":{"type":"string"}}},"SignUpRequest":{"required":["password","role","username"],"type":"object","properties":{"username":{"type":"string"},"password":{"type":"string"},"role":{"type":"string","enum":["DOCTOR","HEAD_NURSE","DEPARTMENT_HEAD","PHARMACIST","DIRECTOR"]}}},"JwtAuthenticationResponse":{"type":"object","properties":{"token":{"type":"string"}}},"SignInRequest":{"required":["password","username"],"type":"object","properties":{"username":{"type":"string"},"password":{"type":"string"}}}},"securitySchemes":{"BearerAuth":{"type":"http","description":"Enter your JWT token in the format: Bearer <token>","scheme":"bearer","bearerFormat":"JWT"}}}}
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Medicine-Accounting Documentation",
+    "description": "API documentation for the REST API project with Spring Security",
+    "version": "0.0.1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
+  "paths": {
+    "/api/users/{id}": {
+      "get": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "Получить информацию о пользователе",
+        "description": "Этот эндпоинт позволяет получить информацию о пользователе по его уникальному идентификатору.",
+        "operationId": "getUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Пользователь не найден.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Пользователь найден и возвращен.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserReadDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "Обновить информацию о пользователе",
+        "description": "Этот эндпоинт позволяет обновить информацию о пользователе по его уникальному идентификатору.",
+        "operationId": "updateUser",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserUpdateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Пользователь не найден.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Пользователь успешно обновлен.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserReadDTO"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/specialities/{id}": {
+      "get": {
+        "tags": [
+          "speciality-controller"
+        ],
+        "summary": "Получить информацию об специальности",
+        "description": "Этот эндпоинт позволяет получить информацию об специальности по её уникальному идентификатору.",
+        "operationId": "getSpeciality",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Специальность не найдена.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Специальность успешно получена.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpecialityReadDTO"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "speciality-controller"
+        ],
+        "summary": "Обновить информацию об специальности",
+        "description": "Этот эндпоинт позволяет обновить информацию об специальности по её уникальному идентификатору.",
+        "operationId": "updateSpeciality",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SpecialityCreateUpdateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Специальность успешно обновлена.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpecialityReadDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Специальность не найдена.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "speciality-controller"
+        ],
+        "summary": "Удалить специальность",
+        "description": "Этот эндпоинт позволяет удалить специальность.",
+        "operationId": "deleteSpeciality",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Специальность не найдена.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Специальность успешно удалена.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpecialityReadDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/patients/{patientId}/disease-histories/{id}": {
+      "get": {
+        "tags": [
+          "disease-history-controller"
+        ],
+        "summary": "Получить информацию об истории болезни",
+        "description": "Этот эндпоинт позволяет получить информацию об истории болезни по её уникальному идентификатору.",
+        "operationId": "getDiseaseHistory",
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "История болезни успешно получена.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiseaseHistoryReadDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "История болезни не найдена.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "disease-history-controller"
+        ],
+        "summary": "Обновить информацию об истории болезни",
+        "description": "Этот эндпоинт позволяет обновить информацию об истории болезни по её уникальному идентификатору.",
+        "operationId": "updateDiseaseHistory",
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DiseaseHistoryCreateUpdateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "История болезни успешно обновлена.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiseaseHistoryReadDTO"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "История болезни не найдена у данного пациента.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "История болезни не найдена.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "disease-history-controller"
+        ],
+        "summary": "Удалить историю болезни",
+        "description": "Этот эндпоинт позволяет удалить историю болезни.",
+        "operationId": "deleteDiseaseHistory",
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "История болезни успешно удалёна.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiseaseHistoryReadDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "История болезни не найдена.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/patients/{patientId}/disease-histories/{diseaseHistoryId}/prescriptions/{id}": {
+      "get": {
+        "tags": [
+          "prescription-controller"
+        ],
+        "summary": "Получить информацию о назначении",
+        "description": "Этот эндпоинт позволяет получить информацию о назначении по его уникальному идентификатору.",
+        "operationId": "getPrescription",
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "diseaseHistoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Назначение успешно получено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrescriptionReadDTO"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Назначение не найдено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "prescription-controller"
+        ],
+        "summary": "Обновить информацию о назначении",
+        "description": "Этот эндпоинт позволяет обновить информацию о назначении по его уникальному идентификатору.",
+        "operationId": "updatePrescription",
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "diseaseHistoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PrescriptionUpdateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "409": {
+            "description": "Назначение не найдено у данной истории болезней.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Назначение успешно обновлено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrescriptionReadDTO"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Назначение не найдено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "prescription-controller"
+        ],
+        "summary": "Удалить назначение",
+        "description": "Этот эндпоинт позволяет удалить назначение (сменить статус на 'отменено').",
+        "operationId": "deletePrescription",
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "diseaseHistoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Назначение успешно удалено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrescriptionReadDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Назначение не найдено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/patients/{id}": {
+      "get": {
+        "tags": [
+          "patient-controller"
+        ],
+        "summary": "Получить информацию о пациенте",
+        "description": "Этот эндпоинт позволяет получить информацию о пациенте по его уникальному идентификатору.",
+        "operationId": "getPatient",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Пациент успешно получен.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatientReadDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Пациент не найден.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "patient-controller"
+        ],
+        "summary": "Обновить информацию об пациенте",
+        "description": "Этот эндпоинт позволяет обновить информацию об пациенте по его уникальному идентификатору.",
+        "operationId": "updatePatient",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatientCreateUpdateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Пациент успешно обновлён.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatientReadDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Пациент не найден.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "patient-controller"
+        ],
+        "summary": "Удалить пациент",
+        "description": "Этот эндпоинт позволяет удалить пациента.",
+        "operationId": "deletePatient",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Пациент не найден.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Пациент успешно удалён.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatientReadDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/medicines/{id}": {
+      "get": {
+        "tags": [
+          "medicine-controller"
+        ],
+        "summary": "Получить информацию об отделении",
+        "description": "Этот эндпоинт позволяет получить информацию об отделении по его уникальному идентификатору.",
+        "operationId": "getMedicine",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Отделение не найдено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Отделение успешно получено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedicineReadDTO"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "medicine-controller"
+        ],
+        "summary": "Обновить информацию об отделении",
+        "description": "Этот эндпоинт позволяет обновить информацию об отделении по его уникальному идентификатору.",
+        "operationId": "updateMedicine",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MedicineCreateUpdateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Отделение не найдено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Отделение успешно обновлено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedicineReadDTO"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "medicine-controller"
+        ],
+        "summary": "Удалить отделение",
+        "description": "Этот эндпоинт позволяет удалить отделение.",
+        "operationId": "deleteSpeciality_1",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Отделение не найдено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Отделение успешно удалено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedicineReadDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/doctors/{id}": {
+      "get": {
+        "tags": [
+          "doctor-controller"
+        ],
+        "summary": "Получить информацию о сотруднике",
+        "description": "Этот эндпоинт позволяет получить информацию о сотруднике по его уникальному идентификатору.",
+        "operationId": "getDoctor",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Сотрудник не найден.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Сотрудник успешно получен.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorReadDTO"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "doctor-controller"
+        ],
+        "summary": "Обновить информацию о сотруднике",
+        "description": "Этот эндпоинт позволяет обновить информацию о сотруднике по его уникальному идентификатору.",
+        "operationId": "updateDoctor",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DoctorUpdateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Сотрудник успешно обновлен.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorReadDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Сотрудник не найден.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/diseases/{id}": {
+      "get": {
+        "tags": [
+          "disease-controller"
+        ],
+        "summary": "Получить информацию об заболевании",
+        "description": "Этот эндпоинт позволяет получить информацию об заболевании по его уникальному идентификатору.",
+        "operationId": "getDisease",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Заболевание не найдено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Заболевание успешно получено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiseaseReadDTO"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "disease-controller"
+        ],
+        "summary": "Обновить информацию об заболевании",
+        "description": "Этот эндпоинт позволяет обновить информацию об заболевании по его уникальному идентификатору.",
+        "operationId": "updateDisease",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DiseaseCreateUpdateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Заболевание не найдено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Заболевание успешно обновлено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiseaseReadDTO"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "disease-controller"
+        ],
+        "summary": "Удалить заболевание",
+        "description": "Этот эндпоинт позволяет удалить заболевание.",
+        "operationId": "deleteSpeciality_2",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Заболевание не найдено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Заболевание успешно удалено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiseaseReadDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/departments/{id}": {
+      "get": {
+        "tags": [
+          "department-controller"
+        ],
+        "summary": "Получить информацию об отделении",
+        "description": "Этот эндпоинт позволяет получить информацию об отделении по его уникальному идентификатору.",
+        "operationId": "getDepartment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Отделение не найдено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Отделение успешно получено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepartmentReadDTO"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "department-controller"
+        ],
+        "summary": "Обновить информацию об отделении",
+        "description": "Этот эндпоинт позволяет обновить информацию об отделении по его уникальному идентификатору.",
+        "operationId": "updateDepartment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DepartmentCreateUpdateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Отделение не найдено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Отделение успешно обновлено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepartmentReadDTO"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "department-controller"
+        ],
+        "summary": "Удалить отделение",
+        "description": "Этот эндпоинт позволяет удалить отделение.",
+        "operationId": "deleteSpeciality_3",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Отделение не найдено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Отделение успешно удалено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepartmentReadDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/specialities": {
+      "get": {
+        "tags": [
+          "speciality-controller"
+        ],
+        "summary": "Получить список всех специальностей",
+        "description": "Этот эндпоинт позволяет получить информацию о всех специальностях.",
+        "operationId": "getAllSpecialities",
+        "responses": {
+          "200": {
+            "description": "Успех.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpecialityReadDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "speciality-controller"
+        ],
+        "summary": "Создать специальность больницы",
+        "description": "Этот эндпоинт позволяет создать новую специальность больницы.",
+        "operationId": "createSpeciality",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SpecialityCreateUpdateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Специальность успешно добавлена.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SpecialityReadDTO"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Специальность с таким названием уже существует.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/patients": {
+      "get": {
+        "tags": [
+          "patient-controller"
+        ],
+        "summary": "Получить список всех пациентов",
+        "description": "Этот эндпоинт позволяет получить информацию о всех пациентах.",
+        "operationId": "getAllPatients",
+        "responses": {
+          "200": {
+            "description": "Успех.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatientReadDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "patient-controller"
+        ],
+        "summary": "Добавить пациента больницы",
+        "description": "Этот эндпоинт позволяет добавить нового пациента больницы.",
+        "operationId": "createPatient",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatientCreateUpdateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "409": {
+            "description": "Пациент с таким названием уже существует.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Пациент успешно добавлен.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PatientReadDTO"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/patients/{patientId}/disease-histories": {
+      "get": {
+        "tags": [
+          "disease-history-controller"
+        ],
+        "summary": "Получить список всех историй болезней",
+        "description": "Этот эндпоинт позволяет получить информацию о всех историях болезней.",
+        "operationId": "getAllDiseaseHistories",
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успех.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiseaseHistoryReadDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "disease-history-controller"
+        ],
+        "summary": "Добавить историю болезни пациенту",
+        "description": "Этот эндпоинт позволяет добавить новую историю болезни пациенту.",
+        "operationId": "createDiseaseHistory",
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DiseaseHistoryCreateUpdateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "История Болезни успешно добавлен.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiseaseHistoryReadDTO"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/patients/{patientId}/disease-histories/{diseaseHistoryId}/prescriptions": {
+      "get": {
+        "tags": [
+          "prescription-controller"
+        ],
+        "summary": "Получить список всех назначений",
+        "description": "Этот эндпоинт позволяет получить информацию о всех назначениях.",
+        "operationId": "getAllPrescriptions",
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "diseaseHistoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успех.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrescriptionReadDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "prescription-controller"
+        ],
+        "summary": "Добавить назначение в историю болезни",
+        "description": "Этот эндпоинт позволяет добавить новое назначение в историю болезни пациента.",
+        "operationId": "createPrescription",
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "diseaseHistoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PrescriptionCreateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Назначение успешно добавлено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrescriptionReadDTO"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/medicines": {
+      "get": {
+        "tags": [
+          "medicine-controller"
+        ],
+        "summary": "Получить список всех отделений",
+        "description": "Этот эндпоинт позволяет получить информацию о всех отделениях.",
+        "operationId": "getAllMedicines",
+        "responses": {
+          "200": {
+            "description": "Успех.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedicineReadDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "medicine-controller"
+        ],
+        "summary": "Создать отделение больницы",
+        "description": "Этот эндпоинт позволяет создать новое отделение больницы.",
+        "operationId": "createMedicine",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MedicineCreateUpdateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "409": {
+            "description": "Отделение с таким названием уже существует.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Отделение успешно добавлено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MedicineReadDTO"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/doctors": {
+      "get": {
+        "tags": [
+          "doctor-controller"
+        ],
+        "summary": "Получить список всех сотрудников",
+        "description": "Этот эндпоинт позволяет получить информацию о всех сотрудниках.",
+        "operationId": "getAllDoctors",
+        "responses": {
+          "200": {
+            "description": "Успех.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorReadDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "doctor-controller"
+        ],
+        "summary": "Создать сотрудника больницы",
+        "description": "Этот эндпоинт позволяет создать нового сотрудника больницы для существующей учётной записи.",
+        "operationId": "createDoctor",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DoctorCreateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Сотрудник успешно добавлен.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorReadDTO"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Для данной учётной записи уже создан сотрудник.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/diseases": {
+      "get": {
+        "tags": [
+          "disease-controller"
+        ],
+        "summary": "Получить список всех заболеваний",
+        "description": "Этот эндпоинт позволяет получить информацию о всех заболеваниях.",
+        "operationId": "getAllDiseases",
+        "responses": {
+          "200": {
+            "description": "Успех.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiseaseReadDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "disease-controller"
+        ],
+        "summary": "Создать заболевание больницы",
+        "description": "Этот эндпоинт позволяет создать новое заболевание больницы.",
+        "operationId": "createDisease",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DiseaseCreateUpdateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "409": {
+            "description": "Заболевание с таким названием уже существует.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Заболевание успешно добавлено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiseaseReadDTO"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/departments": {
+      "get": {
+        "tags": [
+          "department-controller"
+        ],
+        "summary": "Получить список всех отделений",
+        "description": "Этот эндпоинт позволяет получить информацию о всех отделениях.",
+        "operationId": "getAllDepartments",
+        "responses": {
+          "200": {
+            "description": "Успех.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepartmentReadDTO"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "department-controller"
+        ],
+        "summary": "Создать отделение больницы",
+        "description": "Этот эндпоинт позволяет создать новое отделение больницы.",
+        "operationId": "createDepartment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DepartmentCreateUpdateDTO"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Отделение успешно добавлено.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DepartmentReadDTO"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Отделение с таким названием уже существует.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Неверный формат запроса или ошибка валидации.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/sign-up": {
+      "post": {
+        "tags": [
+          "authentication-controller"
+        ],
+        "summary": "Регистрация нового пользователя",
+        "description": "Эндпоинт для регистрации нового пользователя. При успешной регистрации возвращает JWT-токен для авторизации.",
+        "operationId": "signUp",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignUpRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Пользователь успешно зарегистрирован.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JwtAuthenticationResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Нарушена структура объекта или данные объекта не валидны.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Пользователь уже существует.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/sign-in": {
+      "post": {
+        "tags": [
+          "authentication-controller"
+        ],
+        "summary": "Авторизация пользователя",
+        "description": "Эндпоинт для входа пользователя с использованием предоставленных учетных данных. Возвращает JWT токен для авторизации.",
+        "operationId": "signIn",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignInRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "403": {
+            "description": "Нарушена структура объекта или данные объекта не валидны.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Пользователь успешно авторизован.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JwtAuthenticationResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Пользователь не найден.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users": {
+      "get": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "Получить список всех пользователей",
+        "description": "Этот эндпоинт позволяет получить информацию о всех пользователях.",
+        "operationId": "getAllUsers",
+        "responses": {
+          "200": {
+            "description": "Успех.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserReadDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/patients/{patientId}/disease-histories/{diseaseHistoryId}/prescriptions/by-disease-history": {
+      "get": {
+        "tags": [
+          "prescription-controller"
+        ],
+        "summary": "Получить список всех назначений в истории болезни",
+        "description": "Этот эндпоинт позволяет получить информацию о всех назначениях конкретной истории болезни.",
+        "operationId": "getAllPrescriptionsByDiseaseHistory",
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "diseaseHistoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Пациент/история болезни не найден/найдена.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Успех.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrescriptionReadDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/patients/{patientId}/disease-histories/by-patient": {
+      "get": {
+        "tags": [
+          "disease-history-controller"
+        ],
+        "summary": "Получить список всех историй болезней",
+        "description": "Этот эндпоинт позволяет получить информацию о всех историях болезней.",
+        "operationId": "getAllDiseaseHistoriesByPatient",
+        "parameters": [
+          {
+            "name": "patientId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Успех.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiseaseHistoryReadDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Пациент не найден.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserUpdateDTO": {
+        "required": [
+          "username"
+        ],
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "errorCode": {
+            "type": "string",
+            "enum": [
+              "DATA_NOT_FOUND",
+              "DATA_ALREADY_EXISTS",
+              "DATA_CONFLICT",
+              "VALIDATION_ERROR",
+              "JSON_NOT_READABLE",
+              "STATUS_TRANSITION_NOT_ALLOWED"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "UserReadDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "DOCTOR",
+              "HEAD_NURSE",
+              "DEPARTMENT_HEAD",
+              "PHARMACIST",
+              "DIRECTOR"
+            ]
+          }
+        }
+      },
+      "SpecialityCreateUpdateDTO": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "SpecialityReadDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "DiseaseHistoryCreateUpdateDTO": {
+        "required": [
+          "conclusion",
+          "diseaseId"
+        ],
+        "type": "object",
+        "properties": {
+          "diseaseId": {
+            "type": "string"
+          },
+          "conclusion": {
+            "type": "string"
+          }
+        }
+      },
+      "DepartmentReadDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "DiseaseHistoryReadDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "disease": {
+            "$ref": "#/components/schemas/DiseaseReadDTO"
+          },
+          "prescriptions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrescriptionReadDTO"
+            }
+          },
+          "conclusion": {
+            "type": "string"
+          }
+        }
+      },
+      "DiseaseReadDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "DoctorReadDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/components/schemas/UserReadDTO"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "patronymicName": {
+            "type": "string"
+          },
+          "department": {
+            "$ref": "#/components/schemas/DepartmentReadDTO"
+          },
+          "speciality": {
+            "$ref": "#/components/schemas/SpecialityReadDTO"
+          },
+          "mobilePhone": {
+            "type": "string"
+          }
+        }
+      },
+      "MedicineReadDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "manual": {
+            "type": "string"
+          },
+          "dose": {
+            "type": "number",
+            "format": "double"
+          },
+          "measurementUnit": {
+            "type": "string",
+            "enum": [
+              "GRAMS",
+              "MILLIGRAMS",
+              "LITERS",
+              "MILLILITRES",
+              "PIECES"
+            ]
+          },
+          "isDrug": {
+            "type": "boolean"
+          },
+          "form": {
+            "type": "string"
+          }
+        }
+      },
+      "PrescriptionReadDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "doctor": {
+            "$ref": "#/components/schemas/DoctorReadDTO"
+          },
+          "medicine": {
+            "$ref": "#/components/schemas/MedicineReadDTO"
+          },
+          "medicineAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "description": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "CREATED",
+              "APPROVED",
+              "IN_STOCK_CHECK",
+              "IN_STOCK",
+              "OUT_OF_STOCK",
+              "ORDERED",
+              "DELIVERED",
+              "RECEIVED_BY_NURSE",
+              "CANCELLED",
+              "COMPLETED"
+            ]
+          },
+          "prescriptionDate": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      },
+      "PrescriptionUpdateDTO": {
+        "required": [
+          "description",
+          "doctorId",
+          "medicineId"
+        ],
+        "type": "object",
+        "properties": {
+          "medicineId": {
+            "type": "string"
+          },
+          "medicineAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "doctorId": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "CREATED",
+              "APPROVED",
+              "IN_STOCK_CHECK",
+              "IN_STOCK",
+              "OUT_OF_STOCK",
+              "ORDERED",
+              "DELIVERED",
+              "RECEIVED_BY_NURSE",
+              "CANCELLED",
+              "COMPLETED"
+            ]
+          }
+        }
+      },
+      "PatientCreateUpdateDTO": {
+        "required": [
+          "address",
+          "dateOfBirth",
+          "firstName",
+          "gender",
+          "lastName",
+          "mobilePhone"
+        ],
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "patronymicName": {
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date"
+          },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "MALE",
+              "FEMALE"
+            ]
+          },
+          "mobilePhone": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          }
+        }
+      },
+      "PatientReadDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "patronymicName": {
+            "type": "string"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date"
+          },
+          "gender": {
+            "type": "string",
+            "enum": [
+              "MALE",
+              "FEMALE"
+            ]
+          },
+          "mobilePhone": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "diseaseHistories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DiseaseHistoryReadDTO"
+            }
+          }
+        }
+      },
+      "MedicineCreateUpdateDTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "manual": {
+            "type": "string"
+          },
+          "dose": {
+            "type": "number",
+            "format": "double"
+          },
+          "measurementUnit": {
+            "type": "string",
+            "enum": [
+              "GRAMS",
+              "MILLIGRAMS",
+              "LITERS",
+              "MILLILITRES",
+              "PIECES"
+            ]
+          },
+          "isDrug": {
+            "type": "boolean"
+          },
+          "form": {
+            "type": "string"
+          }
+        }
+      },
+      "DoctorUpdateDTO": {
+        "required": [
+          "departmentId",
+          "firstName",
+          "lastName",
+          "mobilePhone",
+          "specialityId"
+        ],
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "patronymicName": {
+            "type": "string"
+          },
+          "departmentId": {
+            "type": "string"
+          },
+          "specialityId": {
+            "type": "string"
+          },
+          "mobilePhone": {
+            "type": "string"
+          }
+        }
+      },
+      "DiseaseCreateUpdateDTO": {
+        "required": [
+          "description",
+          "name",
+          "type"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        }
+      },
+      "DepartmentCreateUpdateDTO": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "PrescriptionCreateDTO": {
+        "required": [
+          "description",
+          "doctorId",
+          "medicineId"
+        ],
+        "type": "object",
+        "properties": {
+          "medicineId": {
+            "type": "string"
+          },
+          "medicineAmount": {
+            "type": "number",
+            "format": "double"
+          },
+          "doctorId": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "description": "Статус назначения",
+            "enum": [
+              "CREATED",
+              "APPROVED",
+              "IN_STOCK_CHECK",
+              "IN_STOCK",
+              "OUT_OF_STOCK",
+              "ORDERED",
+              "DELIVERED",
+              "RECEIVED_BY_NURSE",
+              "CANCELLED",
+              "COMPLETED",
+              "CREATED",
+              "APPROVED",
+              "CANCELLED"
+            ]
+          }
+        }
+      },
+      "DoctorCreateDTO": {
+        "required": [
+          "departmentId",
+          "firstName",
+          "lastName",
+          "mobilePhone",
+          "specialityId"
+        ],
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "patronymicName": {
+            "type": "string"
+          },
+          "departmentId": {
+            "type": "string"
+          },
+          "specialityId": {
+            "type": "string"
+          },
+          "mobilePhone": {
+            "type": "string"
+          }
+        }
+      },
+      "SignUpRequest": {
+        "required": [
+          "password",
+          "role",
+          "username"
+        ],
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "DOCTOR",
+              "HEAD_NURSE",
+              "DEPARTMENT_HEAD",
+              "PHARMACIST",
+              "DIRECTOR"
+            ]
+          }
+        }
+      },
+      "JwtAuthenticationResponse": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          }
+        }
+      },
+      "SignInRequest": {
+        "required": [
+          "password",
+          "username"
+        ],
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "description": "Enter your JWT token in the format: Bearer \u003Ctoken\u003E",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
