@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class DiseaseService {
-  private static final String DISEASE_NOT_FOUND = "Заболевание не найдено";
+  public static final String DISEASE_NOT_FOUND = "Заболевание не найдено";
 
   private DiseaseMapper diseaseMapper;
   private DiseaseRepository diseaseRepository;

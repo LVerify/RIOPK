@@ -1,7 +1,9 @@
 package by.hospital.exception.handler;
 
 import by.hospital.exception.DataAlreadyExistsException;
+import by.hospital.exception.DataConflictException;
 import by.hospital.exception.DataNotFoundException;
+import by.hospital.exception.StatusTransitionNotAllowedException;
 import java.time.LocalDateTime;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
@@ -26,9 +28,21 @@ public class GlobalExceptionHandler {
   }
 
   @ExceptionHandler(HttpMessageNotReadableException.class)
-  public ResponseEntity<ErrorResponse> handleDataNotFoundException(
+  public ResponseEntity<ErrorResponse> handleHttpMessageNotReadableException(
       HttpMessageNotReadableException ex) {
     return buildErrorResponse(ErrorCode.JSON_NOT_READABLE, ex.getMessage(), HttpStatus.BAD_REQUEST);
+  }
+
+  @ExceptionHandler(DataConflictException.class)
+  public ResponseEntity<ErrorResponse> handleDataConflictException(DataConflictException ex) {
+    return buildErrorResponse(ErrorCode.DATA_CONFLICT, ex.getMessage(), HttpStatus.CONFLICT);
+  }
+
+  @ExceptionHandler(StatusTransitionNotAllowedException.class)
+  public ResponseEntity<ErrorResponse> handleStatusTransitionNotAllowedException(
+      StatusTransitionNotAllowedException ex) {
+    return buildErrorResponse(
+        ErrorCode.STATUS_TRANSITION_NOT_ALLOWED, ex.getMessage(), HttpStatus.CONFLICT);
   }
 
   @ExceptionHandler(MethodArgumentNotValidException.class)

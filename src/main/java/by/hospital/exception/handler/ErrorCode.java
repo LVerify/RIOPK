@@ -3,6 +3,8 @@ package by.hospital.exception.handler;
 public enum ErrorCode {
   DATA_NOT_FOUND,
   DATA_ALREADY_EXISTS,
+  DATA_CONFLICT,
   VALIDATION_ERROR,
-  JSON_NOT_READABLE
+  JSON_NOT_READABLE,
+  STATUS_TRANSITION_NOT_ALLOWED
 }

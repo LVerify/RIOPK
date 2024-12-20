@@ -4,7 +4,6 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 
 import by.hospital.sequrity.service.JwtAuthenticationFilter;
 import by.hospital.user.service.UserService;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +19,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.cors.CorsConfiguration;
 
 @Configuration
 @EnableWebSecurity
@@ -33,19 +31,7 @@ public class SecurityConfiguration {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.csrf(AbstractHttpConfigurer::disable)
-        // Своего рода отключение CORS (разрешение запросов со всех доменов)
-        .cors(
-            cors ->
-                cors.configurationSource(
-                    request -> {
-                      var corsConfiguration = new CorsConfiguration();
-                      corsConfiguration.setAllowedOriginPatterns(List.of("*"));
-                      corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
-                      corsConfiguration.setAllowedHeaders(List.of("*"));
-                      corsConfiguration.setAllowCredentials(true);
-                      return corsConfiguration;
-                    }))
-        // Настройка доступа к конечным точкам
+        .cors(AbstractHttpConfigurer::disable)
         .authorizeHttpRequests(
             request -> request.requestMatchers("/**").permitAll()
             //                    .requestMatchers("/api/auth/*")

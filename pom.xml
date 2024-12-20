@@ -5,50 +5,24 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.4.0</version>
+		<version>3.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>by.hospital</groupId>
-	<artifactId>MedicineAccountung</artifactId>
+	<artifactId>medicine-accountung</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>MedicineAccounting</name>
-	<description>Moi malenkiy diplom</description>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
+	<name>medicine-accounting</name>
+	<description>dip</description>
+
 	<properties>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
-		<!-- Jakarta Validation API -->
-		<dependency>
-			<groupId>jakarta.validation</groupId>
-			<artifactId>jakarta.validation-api</artifactId>
-			<version>3.0.2</version>
-		</dependency>
-
 		<!-- Hibernate Validator -->
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>8.0.0.Final</version>
-		</dependency>
-
-		<!-- Expression Language API -->
-		<dependency>
-			<groupId>org.glassfish</groupId>
-			<artifactId>jakarta.el</artifactId>
-			<version>4.0.2</version>
 		</dependency>
 
 		<!-- Spring Boot Dependencies -->
@@ -60,37 +34,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-		<!-- Spring Security -->
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			<version>6.3.4</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-			<version>6.1.4</version>
-		</dependency>
-
-		<!-- Spring Web -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>6.1.12</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-maven-plugin</artifactId>
-			<version>3.4.0</version>
-		</dependency>
-
-		<!-- Servlet API -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>4.0.1</version>
-			<scope>provided</scope>
+			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
 		<!-- JWT -->
@@ -123,7 +73,8 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
+			<version>1.18.36</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- MapStruct -->
@@ -159,17 +110,30 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>com.diffplug.spotless</groupId>
-			<artifactId>spotless-maven-plugin</artifactId>
-			<version>2.42.0</version>
-		</dependency>
 	</dependencies>
+
 
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>1.18.36</version>
+						</path>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>1.6.2</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -198,7 +162,7 @@
 					<java>
 						<!-- Настройка порядка импортов -->
 						<importOrder>
-							<order>java,javax,org,com</order> <!-- Настройте порядок как в Gradle -->
+							<order>java,org,com</order> <!-- Настройте порядок как в Gradle -->
 						</importOrder>
 						<!-- Удаление неиспользуемых импортов -->
 						<removeUnusedImports/>

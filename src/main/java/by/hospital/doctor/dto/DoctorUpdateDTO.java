@@ -8,7 +8,7 @@ public class DoctorUpdateDTO {
   @NotEmpty private String firstName;
   @NotEmpty private String lastName;
   private String patronymicName;
-  @NotEmpty private String department;
-  @NotEmpty private String speciality;
+  @NotEmpty private String departmentId;
+  @NotEmpty private String specialityId;
   @NotEmpty private String mobilePhone;
 }

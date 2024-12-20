@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class DepartmentService {
-  private static final String DEPARTMENT_NOT_FOUND = "Отделение не найдено";
+  public static final String DEPARTMENT_NOT_FOUND = "Отделение не найдено";
 
   private DepartmentMapper departmentMapper;
   private DepartmentRepository departmentRepository;

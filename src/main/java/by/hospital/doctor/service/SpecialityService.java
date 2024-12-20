@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class SpecialityService {
-  private static final String SPECIALITY_NOT_FOUND = "Специальность не найдена";
+  public static final String SPECIALITY_NOT_FOUND = "Специальность не найдена";
 
   private SpecialityMapper specialityMapper;
   private SpecialityRepository specialityRepository;
