@@ -57,6 +57,10 @@
 
 ### User-Flow
 
+![photo_2024-12-26_22-50-26 (2)](https://github.com/user-attachments/assets/f5be8fea-3907-4072-b3f4-17f6ae3e31d5)
+![photo_2024-12-26_22-50-26](https://github.com/user-attachments/assets/81315108-eafe-47fc-a602-557aed0a5cdc)
+![photo_2024-12-26_23-08-23](https://github.com/user-attachments/assets/dc6ba8fd-fb9e-4e9f-a517-06d82899fe98)
+
 ## Документация
 
 ### API
