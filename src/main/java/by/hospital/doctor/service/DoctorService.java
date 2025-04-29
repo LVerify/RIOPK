@@ -1,8 +1,5 @@
 package by.hospital.doctor.service;
 
-import static by.hospital.doctor.service.DepartmentService.DEPARTMENT_NOT_FOUND;
-import static by.hospital.doctor.service.SpecialityService.SPECIALITY_NOT_FOUND;
-
 import by.hospital.doctor.dto.DoctorCreateDTO;
 import by.hospital.doctor.dto.DoctorReadDTO;
 import by.hospital.doctor.dto.DoctorUpdateDTO;
@@ -14,9 +11,13 @@ import by.hospital.doctor.service.mapper.DoctorMapper;
 import by.hospital.exception.DataAlreadyExistsException;
 import by.hospital.exception.DataNotFoundException;
 import by.hospital.user.service.UserService;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+import static by.hospital.doctor.service.DepartmentService.DEPARTMENT_NOT_FOUND;
+import static by.hospital.doctor.service.SpecialityService.SPECIALITY_NOT_FOUND;
 
 @Service
 @AllArgsConstructor

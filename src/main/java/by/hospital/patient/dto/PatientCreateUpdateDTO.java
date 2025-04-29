@@ -1,6 +1,6 @@
-package by.hospital.diseasehistory.dto;
+package by.hospital.patient.dto;
 
-import by.hospital.diseasehistory.entity.Gender;
+import by.hospital.patient.entity.Gender;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;

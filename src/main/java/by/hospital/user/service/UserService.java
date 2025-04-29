@@ -7,11 +7,12 @@ import by.hospital.user.dto.UserUpdateDTO;
 import by.hospital.user.entity.User;
 import by.hospital.user.repository.UserRepository;
 import by.hospital.user.service.mapper.UserMapper;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @AllArgsConstructor

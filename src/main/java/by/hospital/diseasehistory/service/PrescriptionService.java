@@ -1,18 +1,18 @@
 package by.hospital.diseasehistory.service;
 
 import static by.hospital.diseasehistory.service.DiseaseHistoryService.DISEASE_HISTORY_NOT_FOUND;
-import static by.hospital.diseasehistory.service.PatientService.PATIENT_NOT_FOUND;
+import static by.hospital.patient.service.PatientService.PATIENT_NOT_FOUND;
 import static by.hospital.medicine.service.MedicineService.MEDICINE_NOT_FOUND;
 
 import by.hospital.diseasehistory.dto.PrescriptionCreateDTO;
 import by.hospital.diseasehistory.dto.PrescriptionReadDTO;
 import by.hospital.diseasehistory.dto.PrescriptionUpdateDTO;
 import by.hospital.diseasehistory.entity.DiseaseHistory;
-import by.hospital.diseasehistory.entity.Patient;
+import by.hospital.patient.entity.Patient;
 import by.hospital.diseasehistory.entity.Prescription;
 import by.hospital.diseasehistory.entity.PrescriptionStatus;
 import by.hospital.diseasehistory.repository.DiseaseHistoryRepository;
-import by.hospital.diseasehistory.repository.PatientRepository;
+import by.hospital.patient.repository.PatientRepository;
 import by.hospital.diseasehistory.repository.PrescriptionRepository;
 import by.hospital.diseasehistory.service.mapper.PrescriptionMapper;
 import by.hospital.exception.DataConflictException;

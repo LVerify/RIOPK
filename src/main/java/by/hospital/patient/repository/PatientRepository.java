@@ -1,6 +1,6 @@
-package by.hospital.diseasehistory.repository;
+package by.hospital.patient.repository;
 
-import by.hospital.diseasehistory.entity.Patient;
+import by.hospital.patient.entity.Patient;
 import java.time.LocalDate;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

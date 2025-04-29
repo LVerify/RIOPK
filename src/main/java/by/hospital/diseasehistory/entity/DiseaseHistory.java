@@ -2,6 +2,7 @@ package by.hospital.diseasehistory.entity;
 
 import by.hospital.BaseEntity;
 import by.hospital.disease.entity.Disease;
+import by.hospital.patient.entity.Patient;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -30,6 +31,8 @@ public class DiseaseHistory extends BaseEntity {
   @JoinColumn(name = "disease_id", nullable = false)
   private Disease disease;
 
-  @Column(nullable = false)
+  @Column
   private String conclusion;
 }
+
+//добавить: отделение, палата, место в палате

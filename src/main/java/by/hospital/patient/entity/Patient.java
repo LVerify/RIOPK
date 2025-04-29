@@ -1,6 +1,7 @@
-package by.hospital.diseasehistory.entity;
+package by.hospital.patient.entity;
 
 import by.hospital.BaseEntity;
+import by.hospital.diseasehistory.entity.DiseaseHistory;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;

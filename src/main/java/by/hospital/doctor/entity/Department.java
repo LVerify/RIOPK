@@ -6,10 +6,11 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @Entity
@@ -21,7 +22,17 @@ public class Department extends BaseEntity {
   @Column(name = "name", nullable = false)
   private String name;
 
+  //лист палат для этого отделения
+
   @OneToMany(mappedBy = "department")
   @JsonBackReference
   private List<Doctor> staff;
 }
+
+//палата
+/*
+* id
+* строка с номером палаты
+*
+*
+* */

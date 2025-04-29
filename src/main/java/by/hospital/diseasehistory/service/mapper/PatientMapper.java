@@ -2,10 +2,10 @@ package by.hospital.diseasehistory.service.mapper;
 
 import by.hospital.disease.dto.DiseaseReadDTO;
 import by.hospital.diseasehistory.dto.DiseaseHistoryReadDTO;
-import by.hospital.diseasehistory.dto.PatientCreateUpdateDTO;
-import by.hospital.diseasehistory.dto.PatientReadDTO;
+import by.hospital.patient.dto.PatientCreateUpdateDTO;
+import by.hospital.patient.dto.PatientReadDTO;
 import by.hospital.diseasehistory.entity.DiseaseHistory;
-import by.hospital.diseasehistory.entity.Patient;
+import by.hospital.patient.entity.Patient;
 import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;

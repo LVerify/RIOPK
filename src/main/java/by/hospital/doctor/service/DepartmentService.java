@@ -7,9 +7,10 @@ import by.hospital.doctor.repository.DepartmentRepository;
 import by.hospital.doctor.service.mapper.DepartmentMapper;
 import by.hospital.exception.DataAlreadyExistsException;
 import by.hospital.exception.DataNotFoundException;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @AllArgsConstructor

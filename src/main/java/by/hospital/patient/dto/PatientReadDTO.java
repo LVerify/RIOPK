@@ -1,6 +1,7 @@
-package by.hospital.diseasehistory.dto;
+package by.hospital.patient.dto;
 
-import by.hospital.diseasehistory.entity.Gender;
+import by.hospital.diseasehistory.dto.DiseaseHistoryReadDTO;
+import by.hospital.patient.entity.Gender;
 import java.time.LocalDate;
 import java.util.List;
 import lombok.Data;

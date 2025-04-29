@@ -1,8 +1,8 @@
-package by.hospital.diseasehistory.controller;
+package by.hospital.patient.controller;
 
-import by.hospital.diseasehistory.dto.PatientCreateUpdateDTO;
-import by.hospital.diseasehistory.dto.PatientReadDTO;
-import by.hospital.diseasehistory.service.PatientService;
+import by.hospital.patient.dto.PatientCreateUpdateDTO;
+import by.hospital.patient.dto.PatientReadDTO;
+import by.hospital.patient.service.PatientService;
 import by.hospital.exception.handler.ErrorResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

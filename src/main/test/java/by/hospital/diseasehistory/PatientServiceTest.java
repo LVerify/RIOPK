@@ -1,10 +1,10 @@
 package by.hospital.diseasehistory;
 
-import by.hospital.diseasehistory.dto.PatientCreateUpdateDTO;
-import by.hospital.diseasehistory.dto.PatientReadDTO;
-import by.hospital.diseasehistory.entity.Patient;
-import by.hospital.diseasehistory.repository.PatientRepository;
-import by.hospital.diseasehistory.service.PatientService;
+import by.hospital.patient.dto.PatientCreateUpdateDTO;
+import by.hospital.patient.dto.PatientReadDTO;
+import by.hospital.patient.entity.Patient;
+import by.hospital.patient.repository.PatientRepository;
+import by.hospital.patient.service.PatientService;
 import by.hospital.diseasehistory.service.mapper.PatientMapper;
 import by.hospital.exception.DataAlreadyExistsException;
 import by.hospital.exception.DataNotFoundException;
@@ -19,7 +19,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
